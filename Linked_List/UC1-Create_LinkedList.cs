@@ -47,14 +47,5 @@ namespace DataStructure
             }
         }
     }
-    class program
-    {
-        static void Main(string[] args)
-        {
-            LinkedList linkedList = new LinkedList();
-            Node node_2 = new Node(56);
-            Node node_1 = new Node(70);
-            linkedList.Display();
-        }
-    }
+    
 }
