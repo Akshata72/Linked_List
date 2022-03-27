@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LinkedList1
+namespace LinkeList
 {
     public class Node
     {
@@ -12,12 +12,12 @@ namespace LinkedList1
         public Node next;
         public Node(int data)
         {
-           this.data = data;
+            this.data = data;
             next = null;
         }
     }
     public class LinkedList
-    { 
+    {
         public Node Head;
         public Node Tail;
         public LinkedList()
@@ -38,15 +38,22 @@ namespace LinkedList1
                 Head = node;
             }
         }
-        public void DeleteFirstNode()
+        public void DeleteLastNode()
         {
             if (this.Head == null)
             {
-                Console.WriteLine("Nothing to delete list is empty");
+                Console.WriteLine("List is Empty");
             }
-            Node temp = this.Head;
-            this.Head = this.Head.next;
-            Console.WriteLine("\nRemove from linkedlist " + temp.data);
+            else
+            {
+                Node temp = this.Head;
+                while (temp.next.next != null)
+                {
+                    temp = temp.next;
+                }
+                temp.next = null;
+                Console.WriteLine("\nRemove from linkedlist " + temp.next);
+            }
         }
         internal void Display()
         {
@@ -60,12 +67,29 @@ namespace LinkedList1
             while (temp != null)
             {
                 Console.Write(temp.data);
-                 if (temp.next != null)
-                 {
-                     Console.Write("->");
-                 }
+                if (temp.next != null)
+                {
+                    Console.Write("->");
+                }
                 temp = temp.next;
             }
         }
     }
+    class program
+    {
+        static void Main(string[] args)
+        {
+            LinkedList linkedList = new LinkedList();
+            Node node_3 = new Node(56);
+            Node node_2 = new Node(30);
+            Node node_1 = new Node(70);
+            linkedList.AddNode(node_1);
+            linkedList.AddNode(node_2);
+            linkedList.AddNode(node_3);
+            linkedList.Display();
+            linkedList.DeleteLastNode();
+            linkedList.Display();
+        }
+    }
+
 }
