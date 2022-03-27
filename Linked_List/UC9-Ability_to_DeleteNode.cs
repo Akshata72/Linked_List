@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LinkdList
+namespace Linkd_List
 {
     public class Node
     {
@@ -52,22 +52,16 @@ namespace LinkdList
             }
             return false;
         }
-        public void InsertNode(int data)
+        public void DeleteNode()
         {
-            Node node = new Node(data);
-            Node node_1 = new Node(70);
-            Node node_2 = new Node(30);
-            if (Head == null && Tail == null)
+            if (this.Head.next.next == null)
             {
-                Head = node;
-                Tail = node;
+                Console.WriteLine("Nothing to delete list is empty");
             }
-            else
-            {
-                Head.next = node_2;
-                Head.next.next = node;
-                Head.next.next.next = node_1;
-            }
+            Node temp = this.Head.next.next;
+            this.Head.next.next = this.Head.next.next.next;
+
+            Console.WriteLine("\nRemove from linkedlist " + temp.data);
         }
         internal void Display()
         {
@@ -89,4 +83,33 @@ namespace LinkdList
             }
         }
     }
+    class program
+    {
+        static void Main(string[] args)
+        {
+            LinkedList linkedList = new LinkedList();
+            Node node_4 = new Node(56);
+            Node node_3 = new Node(30);
+            Node node_2 = new Node(40);
+            Node node_1 = new Node(70);
+            linkedList.AddNode(node_1);
+            linkedList.AddNode(node_2);
+            linkedList.AddNode(node_3);
+            linkedList.AddNode(node_4);
+            linkedList.Display();
+            Console.WriteLine("\nEnter number to Search");
+            int Value = int.Parse(Console.ReadLine());
+            if (linkedList.search(Value) != null)
+            {
+                Console.WriteLine("Node found");
+                linkedList.DeleteNode();
+                linkedList.Display();
+            }
+            else
+            {
+                Console.WriteLine("Node not found");
+            }
+        }
+    }
 }
+
