@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-namespace LinkeList
+namespace LinkeDList
 {
     public class Node
     {
@@ -18,6 +17,7 @@ namespace LinkeList
     }
     public class LinkedList
     {
+        
         public Node Head;
         public Node Tail;
         public LinkedList()
@@ -38,22 +38,18 @@ namespace LinkeList
                 Head = node;
             }
         }
-        public void DeleteLastNode()
+        public bool search(int Value)
         {
-            if (this.Head == null)
+            Node temp = this.Head;
+            while (temp != null)
             {
-                Console.WriteLine("List is Empty");
-            }
-            else
-            {
-                Node temp = this.Head;
-                while (temp.next.next != null)
+                if (temp.data == Value)
                 {
-                    temp = temp.next;
+                    return true;
                 }
-                temp.next = null;
-                Console.WriteLine("\nRemove from linkedlist " + temp.next);
+                temp = temp.next;
             }
+            return false;
         }
         internal void Display()
         {
@@ -73,6 +69,31 @@ namespace LinkeList
                 }
                 temp = temp.next;
             }
+        }
+    }
+    class program
+    {
+        static void Main(string[] args)
+        {
+            LinkedList linkedList = new LinkedList();
+            Node node_3 = new Node(56);
+            Node node_2 = new Node(30);
+            Node node_1 = new Node(70);
+            linkedList.AddNode(node_1);
+            linkedList.AddNode(node_2);
+            linkedList.AddNode(node_3);
+            linkedList.Display();
+            Console.WriteLine("\nEnter number to Search");
+            int Value = int.Parse(Console.ReadLine());
+            if (linkedList.search(Value) != null)
+            {
+                Console.WriteLine("Node found");
+            }
+            else
+            {
+                Console.WriteLine("Node not found");
+            }
+            linkedList.Display();
         }
     }
 }
