@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Linkedlist
+namespace LinkedList1
 {
     public class Node
     {
@@ -12,12 +12,12 @@ namespace Linkedlist
         public Node next;
         public Node(int data)
         {
-            this.data = data;
+           this.data = data;
             next = null;
         }
     }
     public class LinkedList
-    {
+    { 
         public Node Head;
         public Node Tail;
         public LinkedList()
@@ -38,33 +38,15 @@ namespace Linkedlist
                 Head = node;
             }
         }
-        public void AppendNode(int data)
+        public void DeleteFirstNode()
         {
-            Node node = new Node(data);
-            if (Head == null)
+            if (this.Head == null)
             {
-                Head = Tail = node;
+                Console.WriteLine("Nothing to delete list is empty");
             }
-            else
-            {
-                Tail.next = node;
-                Tail = node;
-            }
-        }
-        public void AddBetweenNode(int data)
-        {
-            Node node = new Node(data);
-            Node node_1 = new Node(70);
-            if (Head == null && Tail == null)
-            {
-                Head = node;
-                Tail = node;
-            }
-            else
-            {
-                Head.next = node;
-                Head.next.next = node_1;
-            }
+            Node temp = this.Head;
+            this.Head = this.Head.next;
+            Console.WriteLine("\nRemove from linkedlist " + temp.data);
         }
         internal void Display()
         {
@@ -78,12 +60,28 @@ namespace Linkedlist
             while (temp != null)
             {
                 Console.Write(temp.data);
-                if (temp.next != null)
-                {
-                    Console.Write("->");
-                }
+                 if (temp.next != null)
+                 {
+                     Console.Write("->");
+                 }
                 temp = temp.next;
             }
+        }
+    }
+    class program
+    {
+        static void Main(string[] args)
+        {
+            LinkedList linkedList = new LinkedList();
+            Node node_3 = new Node(56);
+            Node node_2 = new Node(30);
+            Node node_1 = new Node(70);
+            linkedList.AddNode(node_1);
+            linkedList.AddNode(node_2);
+            linkedList.AddNode(node_3);
+            linkedList.Display();
+            linkedList.DeleteFirstNode();
+            linkedList.Display();
         }
     }
 }
