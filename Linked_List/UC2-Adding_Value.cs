@@ -58,19 +58,4 @@ namespace Linked_List
                 }
             }
         }
-        class program
-        {
-            static void Main(string[] args)
-            {
-                LinkedList linkedList = new LinkedList();
-                Node node_3 = new Node(56);
-                Node node_2 = new Node(30);
-                Node node_1 = new Node(70);
-                linkedList.AddNode(node_1);
-                linkedList.AddNode(node_2);
-                linkedList.AddNode(node_3);
-                linkedList.Display();
-
-            }
-        }
 }
