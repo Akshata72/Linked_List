@@ -83,33 +83,5 @@ namespace Linkd_List
             }
         }
     }
-    class program
-    {
-        static void Main(string[] args)
-        {
-            LinkedList linkedList = new LinkedList();
-            Node node_4 = new Node(56);
-            Node node_3 = new Node(30);
-            Node node_2 = new Node(40);
-            Node node_1 = new Node(70);
-            linkedList.AddNode(node_1);
-            linkedList.AddNode(node_2);
-            linkedList.AddNode(node_3);
-            linkedList.AddNode(node_4);
-            linkedList.Display();
-            Console.WriteLine("\nEnter number to Search");
-            int Value = int.Parse(Console.ReadLine());
-            if (linkedList.search(Value) != null)
-            {
-                Console.WriteLine("Node found");
-                linkedList.DeleteNode();
-                linkedList.Display();
-            }
-            else
-            {
-                Console.WriteLine("Node not found");
-            }
-        }
-    }
 }
 
