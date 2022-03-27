@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LinkedList
+namespace Linkedlist
 {
     public class Node
     {
@@ -51,6 +51,21 @@ namespace LinkedList
                 Tail = node;
             }
         }
+        public void AddBetweenNode(int data)
+        {
+            Node node = new Node(data);
+            Node node_1 = new Node(70);
+            if (Head == null && Tail == null)
+            {
+                Head = node;
+                Tail = node;
+            }
+            else
+            {
+                Head.next = node;
+                Head.next.next = node_1;
+            }
+        }
         internal void Display()
         {
             Node temp = Head;
@@ -69,6 +84,22 @@ namespace LinkedList
                 }
                 temp = temp.next;
             }
+        }
+    }
+    class program
+    {
+        static void Main(string[] args)
+        {
+            LinkedList linkedList = new LinkedList();
+            Node node_2 = new Node(56);
+            Node node_1 = new Node(70);
+            linkedList.AddNode(node_1);
+            linkedList.AddNode(node_2);
+            linkedList.Display();
+            Console.WriteLine("\nEnter a Value for Adding between 56 & 70 :");
+            int node = int.Parse(Console.ReadLine());
+            linkedList.AddBetweenNode(node);
+            linkedList.Display();
         }
     }
 }
